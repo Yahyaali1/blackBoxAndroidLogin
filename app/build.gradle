@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId rootProject.ext.applicationId
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // AppCompat
+    implementation libs.appCompat
+    implementation libs.material
+    implementation libs.annotation
+    implementation libs.constraintLayout
+
+
+
+    implementation libs.androidX
+
+    // Retrofit
+    implementation libs.retrofit
+    implementation libs.retrofitGsonConverter
+    implementation libs.retrofitRXJavaAdapter
+    implementation libs.loggingInterceptor
+
+
+    // Dagger 2
+    implementation libs.dagger
+    kapt libs.daggerCompiler
+    implementation libs.daggerAndroid
+    implementation libs.daggerAndroidSupport
+    kapt libs.daggerAndroidCompiler
+
+    // ReactiveX
+    implementation libs.rxJava
+    implementation libs.rxAndroid
+
+    // Architecture Components
+    kapt libs.lifeCycleCompiler
+    implementation libs.lifeCycleExtensions
+
+    testImplementation libs.jUnit
+    androidTestImplementation libs.testRunner
+    androidTestImplementation libs.espresso
+
+
+
+}
