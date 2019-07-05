@@ -58,6 +58,9 @@ dependencies {
     kapt libs.lifeCycleCompiler
     implementation libs.lifeCycleExtensions
 
+    // Event Bus
+    implementation libs.eventBus
+
     testImplementation libs.jUnit
     androidTestImplementation libs.testRunner
     androidTestImplementation libs.espresso
