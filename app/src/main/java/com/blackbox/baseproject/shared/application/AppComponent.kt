@@ -2,6 +2,9 @@ package com.blackbox.baseproject.shared.application
 
 
 import com.blackbox.baseproject.shared.activities.ActivityBuilderModule
+import com.blackbox.baseproject.shared.broadcastReceivers.BroadcastReceiverModule
+import com.blackbox.baseproject.shared.fragments.FragmentBuilderModule
+import com.blackbox.baseproject.shared.services.ServiceBuilderModule
 import com.blackbox.baseproject.shared.viewModel.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component
@@ -23,6 +26,9 @@ import dagger.android.support.AndroidSupportInjectionModule
         AppModule::class,
         ViewModelModule::class,
         ActivityBuilderModule::class,
+        ServiceBuilderModule::class,
+        BroadcastReceiverModule::class,
+        FragmentBuilderModule::class,
         AndroidSupportInjectionModule::class]
 )
 interface AppComponent : AndroidInjector<BlackBoxApplication> {
