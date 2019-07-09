@@ -1,6 +1,7 @@
 package com.blackbox.baseproject.shared.application
 
 
+import android.app.Application
 import com.blackbox.baseproject.shared.activities.ActivityBuilderModule
 import com.blackbox.baseproject.shared.broadcastReceivers.BroadcastReceiverModule
 import com.blackbox.baseproject.shared.fragments.FragmentBuilderModule
@@ -21,21 +22,21 @@ import dagger.android.support.AndroidSupportInjectionModule
  * Provides our activities and fragments with given module.
  *
  */
+@AppScope
 @Component(
     modules = [AndroidSupportInjectionModule::class,
         AppModule::class,
-        ViewModelModule::class,
         ActivityBuilderModule::class,
+        ViewModelModule::class,
         ServiceBuilderModule::class,
         BroadcastReceiverModule::class,
-        FragmentBuilderModule::class,
-        AndroidSupportInjectionModule::class]
+        FragmentBuilderModule::class]
 )
 interface AppComponent : AndroidInjector<BlackBoxApplication> {
     @Component.Builder
     interface Builder {
         @BindsInstance
-        fun application(application: BlackBoxApplication): Builder
+        fun application(application: Application): Builder
         fun build(): AppComponent
     }
 }

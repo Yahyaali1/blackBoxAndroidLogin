@@ -11,7 +11,7 @@ import javax.inject.Provider
 
 @AppScope
 class InjectableViewModelFactory @Inject constructor(
-    private val viewModelProvider: Map<Class<out ViewModel>,Provider<View>>
+    private val viewModelProvider: Map<Class<out ViewModel>,@JvmSuppressWildcards Provider<ViewModel>>
 ):ViewModelProvider.Factory {
 
     /**
@@ -20,6 +20,7 @@ class InjectableViewModelFactory @Inject constructor(
      * Activities and Fragments. The ViewModelFactoryclass has a list of
      * providers and can create any ViewModel that was bound.
      */
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         val provider = viewModelProvider[modelClass]
 
