@@ -1,17 +1,14 @@
 package com.blackbox.baseproject
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import org.greenrobot.eventbus.EventBus
-import javax.inject.Inject
+import com.blackbox.baseproject.shared.activities.BaseActivity
+import com.blackbox.baseproject.shared.viewModel.EmptyViewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<EmptyViewModel>() {
+    override fun getLayoutId(): Int = R.layout.activity_main
 
-    @Inject
-    lateinit var eventBus: EventBus
+    override fun setup() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
     }
+
+
 }
